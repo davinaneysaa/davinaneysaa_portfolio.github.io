@@ -260,7 +260,7 @@
         margin-bottom: 0;
       }
 
-      /* Profile Image (Diperbesar) */
+      /* Profile Image */
       .profile-img-container {
         position: relative;
         display: flex;
@@ -280,7 +280,7 @@
       }
 
       .profile-img {
-        width: 340px; /* Ukuran diperbesar */
+        width: 340px;
         height: 340px;
         border-radius: 50%;
         object-fit: cover;
@@ -421,9 +421,7 @@
         margin: 0 auto;
         width: 100%;
       }
-      .honeypot {
-        display: none !important;
-      }
+
       .form-group {
         margin-bottom: 20px;
       }
@@ -574,7 +572,7 @@
         </div>
       </div>
 
-      <!-- Foto Profil Diperbesar -->
+      <!-- Foto Profil -->
       <div class="profile-img-container">
         <img src="img/6267198098186638688.jpg" alt="Foto Profil" class="profile-img" />
       </div>
@@ -655,11 +653,6 @@
       <h2 class="section-title">Contact Me</h2>
       <div class="glass-card contact-card">
         <form id="contact-form">
-          <!-- Anti-Bot Honeypot -->
-          <div class="honeypot">
-            <input type="text" name="mobile_number" autocomplete="off" />
-          </div>
-
           <div class="form-group">
             <label for="nama">Nama Lengkap</label>
             <input type="text" id="nama" name="Nama" placeholder="Masukkan nama Anda" required />
@@ -684,7 +677,7 @@
     <!-- Script Integration -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // ⚠️ GANTI dengan URL Web App milikmu
+        // ⚠️ GANTI dengan URL Web App Apps Script milikmu yang terbaru
         const scriptURL = "https://script.google.com/macros/s/AKfycbwQdcqFCyhS3N8uw4g7HzgNMzQEXl5tO0QeIkXsgsX6AYuRTI_mI620AL8eVOa4yp8_/exec";
 
         const form = document.getElementById("contact-form");
