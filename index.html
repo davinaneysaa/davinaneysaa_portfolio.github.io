@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Saya</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      /* --- CSS Variables & Reset --- */
+      :root {
+        --card-bg: rgba(255, 255, 255, 0.75);
+        --card-border: rgba(255, 255, 255, 0.9);
+        --accent-color: #0d9488;
+        --accent-hover: #0f766e;
+        --accent-light: #e6fffa;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.08), 0 10px 15px -5px rgba(15, 23, 42, 0.04);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 50%, #f3e8ff 100%);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+        position: relative;
+        min-height: 100vh;
+      }
+
+      /* Pattern Overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+        background-size: 24px 24px;
+        z-index: -2;
+        pointer-events: none;
+      }
+
+      /* Glowing Orbs Background */
+      .bg-blob {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.6;
+      }
+
+      .blob-1 {
+        top: -100px;
+        left: -100px;
+        width: 450px;
+        height: 450px;
+        background: #a7f3d0;
+      }
+      .blob-2 {
+        top: 35%;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: #bae6fd;
+      }
+      .blob-3 {
+        bottom: -100px;
+        left: 15%;
+        width: 420px;
+        height: 420px;
+        background: #ddd6fe;
+      }
+
+      /* Navbar */
+      nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 850px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--card-border);
+        border-radius: 50px;
+        padding: 12px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        font-weight: 800;
+        font-size: 1.15rem;
+        color: var(--accent-color);
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 24px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-color);
+      }
+
+      /* Sections Container */
+      section {
+        min-height: 100vh;
+        padding: 120px 20px 60px;
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+        color: var(--text-main);
+        margin-bottom: 35px;
+        text-align: center;
+        position: relative;
+        font-weight: 700;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-color), #38bdf8);
+        margin: 8px auto 0;
+        border-radius: 2px;
+      }
+
+      /* --- SECTION 1: HOME / PROFILE --- */
+      #home {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 6px 16px;
+        background: var(--accent-light);
+        color: var(--accent-color);
+        font-weight: 700;
+        font-size: 0.8rem;
+        border-radius: 20px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .home-text h1 {
+        font-size: 2.8rem;
+        line-height: 1.15;
+        margin-bottom: 15px;
+        font-weight: 800;
+      }
+
+      .home-text h1 span {
+        background: linear-gradient(135deg, #0d9488, #0284c7);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .home-text p {
+        color: var(--text-muted);
+        margin-bottom: 25px;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .btn-primary {
+        padding: 12px 28px;
+        background: linear-gradient(135deg, #0d9488, #0284c7);
+        color: #ffffff;
+        font-weight: 600;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(13, 148, 136, 0.25);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 25px rgba(13, 148, 136, 0.35);
+      }
+
+      .btn-secondary {
+        padding: 12px 28px;
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--text-main);
+        font-weight: 600;
+        border-radius: 30px;
+        text-decoration: none;
+        border: 1px solid var(--card-border);
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: #ffffff;
+        transform: translateY(-3px);
+      }
+
+      /* Quick Stats */
+      .quick-stats {
+        display: flex;
+        gap: 20px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(15, 23, 42, 0.08);
+      }
+
+      .stat-item h3 {
+        font-size: 1.3rem;
+        color: var(--accent-color);
+        font-weight: 800;
+      }
+
+      .stat-item p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 0;
+      }
+
+      /* Profile Image (Diperbesar) */
+      .profile-img-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile-img-container::before {
+        content: "";
+        position: absolute;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #a7f3d0, #bae6fd);
+        z-index: -1;
+        filter: blur(20px);
+      }
+
+      .profile-img {
+        width: 340px; /* Ukuran diperbesar */
+        height: 340px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 8px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.12);
+      }
+
+      /* --- SECTION 2: ABOUT ME --- */
+      .about-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .glass-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        padding: 35px;
+        box-shadow: var(--shadow);
+      }
+
+      .about-main-text h3 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        color: var(--text-main);
+      }
+
+      .about-main-text p {
+        color: var(--text-muted);
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .highlights-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .highlight-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.6);
+        padding: 12px 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+      }
+
+      .highlight-icon {
+        background: var(--accent-light);
+        color: var(--accent-color);
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .highlight-info h4 {
+        font-size: 0.9rem;
+        color: var(--text-main);
+      }
+
+      .highlight-info p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin: 0;
+      }
+
+      /* --- SECTION 3: PROJECTS --- */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .project-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 25px 35px -10px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .project-info {
+        padding: 22px;
+      }
+      .project-info h3 {
+        margin-bottom: 8px;
+        color: var(--text-main);
+      }
+      .project-info p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      .tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .tag {
+        font-size: 0.75rem;
+        background: var(--accent-light);
+        color: var(--accent-color);
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+
+      /* --- SECTION 4: CONTACT ME --- */
+      .contact-card {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .honeypot {
+        display: none !important;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 12px;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: var(--accent-color);
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15);
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #0d9488, #0284c7);
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 1rem;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(13, 148, 136, 0.2);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.95;
+      }
+      .submit-btn:disabled {
+        background: #94a3b8;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      #status-msg {
+        margin-top: 15px;
+        padding: 12px;
+        border-radius: 12px;
+        text-align: center;
+        display: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      #status-msg.success {
+        display: block;
+        background: #dcfce7;
+        color: #15803d;
+        border: 1px solid #bbf7d0;
+      }
+      #status-msg.error {
+        display: block;
+        background: #fee2e2;
+        color: #b91c1c;
+        border: 1px solid #fecaca;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 868px) {
+        #home,
+        .about-layout {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .profile-img-container {
+          order: -1;
+        }
+        .profile-img {
+          width: 260px;
+          height: 260px;
+        }
+        .profile-img-container::before {
+          width: 270px;
+          height: 270px;
+        }
+        .btn-group,
+        .quick-stats {
+          justify-content: center;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Orbs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <!-- Navbar -->
+    <nav>
+      <div class="logo">Portofolio.</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- 1. HOME / PROFILE -->
+    <section id="home">
+      <div class="home-text">
+        <span class="badge">Selamat Datang di Portofolio Saya</span>
+        <h1>Halo, Saya <br /><span>Pengembang Web</span></h1>
+        <p>Saya seorang pengembang web yang berfokus membangun antarmuka interaktif, responsif, dan estetis. Menggabungkan estetika visual dengan struktur kode yang efisien untuk menghadirkan pengalaman pengguna terbaik.</p>
+
+        <div class="btn-group">
+          <a href="#contact" class="btn-primary">Kirim Pesan</a>
+          <a href="#projects" class="btn-secondary">Lihat Proyek</a>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="quick-stats">
+          <div class="stat-item">
+            <h3>100%</h3>
+            <p>Responsif & Modern</p>
+          </div>
+          <div class="stat-item">
+            <h3>Full Stack</h3>
+            <p>Frontend & Scripting</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Foto Profil Diperbesar -->
+      <div class="profile-img-container">
+        <img src="img/6267198098186638688.jpg" alt="Foto Profil" class="profile-img" />
+      </div>
+    </section>
+
+    <!-- 2. ABOUT ME -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-layout">
+        <!-- Kolom 1: Deskripsi Diri -->
+        <div class="glass-card about-main-text">
+          <h3>Membangun Solusi Digital Berkelanjutan</h3>
+          <p>Berbasis di Malang, Jawa Timur, saya memiliki gairah besar dalam merancang sistem web yang tidak hanya menarik dari segi tampilan, tetapi juga kuat secara fungsional.</p>
+          <p>Setiap proyek yang saya kerjakan dirancang dengan perhatian mendalam terhadap performa, kerapian struktur kode, dan aksesibilitas pengguna.</p>
+        </div>
+
+        <!-- Kolom 2: Highlight Keahlian -->
+        <div class="glass-card">
+          <ul class="highlights-list">
+            <li class="highlight-item">
+              <div class="highlight-icon"><i class="fa-solid fa-code"></i></div>
+              <div class="highlight-info">
+                <h4>Keahlian Utama</h4>
+                <p>HTML5, CSS3, JavaScript, Google Apps Script</p>
+              </div>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-icon"><i class="fa-solid fa-palette"></i></div>
+              <div class="highlight-info">
+                <h4>Desain Antarmuka (UI/UX)</h4>
+                <p>Pengembangan web estetis, bersih, dan modern</p>
+              </div>
+            </li>
+            <li class="highlight-item">
+              <div class="highlight-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="highlight-info">
+                <h4>Domisili</h4>
+                <p>Malang, Jawa Timur, Indonesia</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=500" alt="Project 1" class="project-img" />
+          <div class="project-info">
+            <h3>Form Integrasi Google Sheets</h3>
+            <p>Sistem formulir portofolio interaktif tanpa reload dengan otomatisasi penyimpanan data dan notifikasi email.</p>
+            <div class="tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">Apps Script</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=500" alt="Project 2" class="project-img" />
+          <div class="project-info">
+            <h3>Desain Web Modern</h3>
+            <p>Tampilan antarmuka yang bersih, responsif di berbagai perangkat, dan menggunakan skema warna yang nyaman di mata.</p>
+            <div class="tags">
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">UI/UX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CONTACT ME -->
+    <section id="contact">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="glass-card contact-card">
+        <form id="contact-form">
+          <!-- Anti-Bot Honeypot -->
+          <div class="honeypot">
+            <input type="text" name="mobile_number" autocomplete="off" />
+          </div>
+
+          <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Alamat Email</label>
+            <input type="email" id="email" name="email" placeholder="nama@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="pesan">Pesan & Kesan</label>
+            <textarea id="pesan" name="pesan" rows="4" placeholder="Tuliskan pesan dan kesan Anda di sini..." required></textarea>
+          </div>
+
+          <button type="submit" id="submit-btn" class="submit-btn">Kirim Pesan</button>
+          <div id="status-msg"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Script Integration -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // ⚠️ GANTI dengan URL Web App milikmu
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxqOMqhlO56qqEMtSCwp3YDyeOISClyGNHaiRj4na4bL16G8IjRlNHt8KusB38nceqc/exec";
+
+        const form = document.getElementById("contact-form");
+        const submitBtn = document.getElementById("submit-btn");
+        const statusMsg = document.getElementById("status-msg");
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          submitBtn.disabled = true;
+          submitBtn.innerText = "Mengirim...";
+          statusMsg.className = "";
+          statusMsg.style.display = "none";
+
+          fetch(scriptURL, {
+            method: "POST",
+            body: new FormData(form),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.result === "success") {
+                statusMsg.innerText = "Terima kasih! Pesan & kesan Anda telah berhasil dikirim.";
+                statusMsg.className = "success";
+                form.reset();
+              } else {
+                throw new Error(data.error || "Terjadi kesalahan");
+              }
+            })
+            .catch((error) => {
+              statusMsg.innerText = "Gagal mengirim pesan. Silakan coba lagi.";
+              statusMsg.className = "error";
+              console.error("Error!", error.message);
+            })
+            .finally(() => {
+              submitBtn.disabled = false;
+              submitBtn.innerText = "Kirim Pesan";
+            });
+        });
+      });
+    </script>
+  </body>
+</html>
